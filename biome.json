@@ -1,0 +1,153 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.5.7/schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true,
+		"defaultBranch": "main"
+	},
+	"files": {
+		"ignoreUnknown": false,
+		"includes": [
+			"**",
+			"!**/.agents",
+			"!**/.claude",
+			"!**/package.json",
+			"!**/bun.lockb",
+			"!**/vercel.json",
+			"!**/components/ui",
+			"!**/*.css",
+			"!**/*.svg"
+		]
+	},
+	"css": {
+		"parser": {
+			"cssModules": true
+		},
+		"linter": {
+			"enabled": false
+		},
+		"formatter": {
+			"enabled": false
+		}
+	},
+	"formatter": {
+		"lineWidth": 110
+	},
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"preset": "recommended",
+			"complexity": {
+				"noForEach": "off",
+				"noImportantStyles": "off"
+			},
+			"correctness": {
+				"useUniqueElementIds": "off",
+				"noUnusedFunctionParameters": "warn",
+				"noUnusedVariables": "warn",
+				"noUnusedImports": {
+					"options": {},
+					"level": "error",
+					"fix": "unsafe"
+				},
+				"useExhaustiveDependencies": {
+					"level": "error",
+					"options": {
+						"hooks": [
+							{
+								"name": "useDidUpdate",
+								"closureIndex": 0,
+								"dependenciesIndex": 1
+							},
+							{
+								"name": "useRouter",
+								"stableResult": true
+							}
+						]
+					}
+				},
+				"noEmptyPattern": "off"
+			},
+			"style": {
+				"useSelfClosingElements": "off",
+				"noDescendingSpecificity": "off",
+				"noUnusedTemplateLiteral": "off",
+				"noUselessElse": "off",
+				"useTemplate": "off",
+				"noDefaultExport": "error",
+				"noNamespace": "error",
+				"useForOf": "error",
+				"noRestrictedGlobals": {
+					"level": "error",
+					"options": {
+						"deniedGlobals": {
+							"name": "Global `name` (window.name) is almost never intended — declare a local variable.",
+							"event": "Global `event` is deprecated — use the handler's event parameter instead."
+						}
+					}
+				},
+				"noParameterAssign": "off",
+				"useAsConstAssertion": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useSingleVarDeclarator": "error",
+				"useNumberNamespace": "error",
+				"noInferrableTypes": "error"
+			},
+			"suspicious": {
+				"useIterableCallbackReturn": "off",
+				"noUnknownAtRules": "off",
+				"noEmptyInterface": "off",
+				"noArrayIndexKey": "off",
+				"noImplicitAnyLet": "error",
+				"noExplicitAny": "error",
+				"noDocumentCookie": "off"
+			},
+			"security": {
+				"noDangerouslySetInnerHtml": "off"
+			}
+		}
+	},
+	"overrides": [
+		{
+			"includes": [
+				"**/*.d.ts",
+				"**/proxy.ts",
+				"**/next.config.{mjs,ts}",
+				"**/postcss.config.mjs",
+				"**/lint-staged.config.{mjs,js}",
+				"**/tailwind.config.ts",
+				"**/app/**/default.tsx",
+				"**/app/**/error.tsx",
+				"**/app/**/global-error.tsx",
+				"**/app/**/layout.tsx",
+				"**/app/**/template.tsx",
+				"**/app/**/loading.tsx",
+				"**/app/**/not-found.tsx",
+				"**/app/**/forbidden.tsx",
+				"**/app/**/unauthorized.tsx",
+				"**/app/**/opengraph-image.tsx",
+				"**/app/**/page.tsx",
+				"**/app/**/robots.ts",
+				"**/app/**/route.tsx",
+				"**/app/**/route.ts",
+				"**/app/**/sitemap.ts"
+			],
+			"linter": {
+				"rules": {
+					"style": {
+						"noDefaultExport": "off"
+					}
+				}
+			}
+		}
+	]
+}
